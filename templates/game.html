@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<main class="container">
+  <div class="col-lg-12" style="margin-top:100px;">
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">Hello {{user}}</h1>
+          <form action='' method='post'>
+            {% csrf_token %}
+          <div class="btn-group">
+          <p class="mt-2">
+            <input type="submit" value="Rock" class="btn btn-outline-info btn-lg" name="name">
+             </p>
+             
+
+          <p class="mt-2">
+            <input type="submit" value="Paper" class="btn btn-outline-info btn-lg" name="name">
+            </p>
+          <p class="mt-2">
+            <input type="submit" value="Scissor" class="btn btn-outline-info btn-lg " name="name">
+            </p>
+        </div>
+        </form>
+        {% if messages %}
+        {% for message in messages %}
+        <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %} role="alert">
+          {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="btn-group">
+        <a href="{% url 'home' %}" class="btn btn-danger mt-5 mx-2">End Game </a>
+        <a href="{% url 'result' %}" class="btn btn-danger mt-5 mx-2">See Results</a>
+        </div>
+      </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+{% endblock body %}

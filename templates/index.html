@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<main class="container">
+  <div class="col-lg-12" style="margin-top:100px;">
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">Rock, Paper & Scissor</h1>
+          <p class="mt-5">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#game">
+              Start Game
+            </button>
+          </p>
+          {% if messages %}
+            {% for message in messages %}
+            <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %} role="alert">
+              {{ message }}
+            </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+{% endblock body %}
